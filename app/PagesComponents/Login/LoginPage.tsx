@@ -1,6 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@components/common/Button";
 
 function noop(e?: React.FormEvent) {
@@ -8,6 +9,7 @@ function noop(e?: React.FormEvent) {
 }
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -97,7 +99,7 @@ export default function LoginPage() {
             tabIndex={2}
             onClick={(e) => {
               e.preventDefault();
-              handleEmailPasswordLogin();
+              router.push("/cbonds-monitor");
             }}
             disabled={isLoading || !email || !password}
             className="w-full rounded-lg bg-(--color-accent) py-3 text-(--color-accent-contrast) hover:bg-(--color-accent-hover) disabled:opacity-60 cursor-pointer"
