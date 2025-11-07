@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* Cera Pro font faces */
+@font-face {
+  font-family: "Cera Pro";
+  src: url("/fonts/cera-pro/CeraPro-Light.woff2") format("woff2"),
+    url("/fonts/cera-pro/CeraPro-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cera Pro";
+  src: url("/fonts/cera-pro/CeraPro-Regular.woff2") format("woff2"),
+    url("/fonts/cera-pro/CeraPro-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cera Pro";
+  src: url("/fonts/cera-pro/CeraPro-Medium.woff2") format("woff2"),
+    url("/fonts/cera-pro/CeraPro-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cera Pro";
+  src: url("/fonts/cera-pro/CeraPro-Bold.woff2") format("woff2"),
+    url("/fonts/cera-pro/CeraPro-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Global color tokens (Tailwind v4: use as bg-[--color-bg] etc.) */
+  --color-bg: #dddad0; /* app background */
+  --color-panel: #ebe8df; /* cards, panels */
+  --color-sidebar: #282828; /* left nav bg */
+  --color-sidebar-accent: #6e543c; /* selected nav */
+  --color-rightpanel: #fffcf0; /* right feed bg */
+  --color-text: #1a1a1a; /* primary text */
+  --color-text-muted: #999999; /* secondary text */
+  --color-border: #e5e7eb; /* borders */
+  --color-border-muted: #999999; /* borders */
+  --color-accent: #c6915c; /* buttons/cta */
+  --color-accent-contrast: #ffffff; /* text over accent */
+  --color-accent-hover: #6e543c; /* hover state */
+  --color-text-gray: #525252;
+  --color-button-hover: #e7e5de;
+  --color-button-hover-accent: #9d724a;
+  --color-button: #b58150;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Cera Pro", sans-serif;
+}
