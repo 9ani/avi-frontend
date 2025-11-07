@@ -27,15 +27,19 @@ export default function AppFrame({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <div className=" grid grid-cols-[240px_1fr]">
-        <aside>
-          <Sidebar />
-        </aside>
-        <main className="flex flex-col min-h-screen">
-          <HeaderNav />
-          <div className="flex-1">{children}</div>
-        </main>
-      </div>
+      <Sidebar />
+      <main
+        className={[
+          "fixed top-0 right-0 h-screen flex flex-col z-0",
+          // Desktop: always offset by sidebar width
+          "lg:left-[240px]",
+          // Mobile/Tablet: full width
+          "left-0",
+        ].join(" ")}
+      >
+        <HeaderNav />
+        <div className="flex-1 overflow-y-auto mt-18">{children}</div>
+      </main>
       <RightPanel />
     </>
   );

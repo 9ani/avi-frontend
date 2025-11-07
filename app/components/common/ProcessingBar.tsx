@@ -16,6 +16,7 @@ interface DocumentData {
   fileSize: string;
   downloadIcon?: React.ReactNode;
   logo?: React.ReactNode;
+  showDownloadOnHover?: boolean;
 }
 
 interface ProcessingBarProps {
@@ -90,6 +91,7 @@ export function ProcessingBar({
               downloadIcon={doc.downloadIcon}
               Logo={doc.logo}
               onClick={() => onDocumentClick && onDocumentClick(doc, index)}
+              showDownloadOnHover={doc.showDownloadOnHover}
             />
           ))}
           {documents.length > 0 && (

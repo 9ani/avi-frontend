@@ -76,7 +76,7 @@ export function ReitingoviyVestnikPage() {
         center={!isProcessing}
       />
       {isProcessing && (
-        <>
+        <div className="flex flex-col gap-2">
           <ProcessingCard
             onStop={() => setIsProcessing(false)}
             status={processingStatus}
@@ -132,8 +132,11 @@ export function ReitingoviyVestnikPage() {
               </div>
             }
           />
-          <ActionIconGroups className="mt-2" />
-        </>
+          <ActionIconGroups
+            className=""
+            isLoading={processingStatus === "loading"}
+          />
+        </div>
       )}
     </div>
   );

@@ -3,9 +3,17 @@ import { Refresh, Copy, Like, Dislike } from "@public/icons";
 
 interface ActionIconGroupsProps {
   className?: string;
+  isLoading?: boolean;
 }
 
-export function ActionIconGroups({ className = "" }: ActionIconGroupsProps) {
+export function ActionIconGroups({
+  className = "",
+  isLoading = false,
+}: ActionIconGroupsProps) {
+  if (isLoading) {
+    return null;
+  }
+
   const groupClass =
     "flex items-center gap-2 rounded-md border border-neutral-300 bg-white px-2 py-1 shadow-sm";
   const itemClass = "p-1 rounded-md hover:bg-neutral-50 cursor-pointer";

@@ -85,7 +85,7 @@ export function CbondsMonitorPage() {
       </PageIntroCard>
       {showRequest && <UserRequest text="Отчёт за текущую неделю" />}
       {isProcessing && (
-        <>
+        <div className="flex flex-col gap-2">
           <ProcessingCard
             logo={PageLogo}
             onStop={() => setIsProcessing(false)}
@@ -102,8 +102,11 @@ export function CbondsMonitorPage() {
               </div>
             }
           />
-          <ActionIconGroups className="mt-2" />
-        </>
+          <ActionIconGroups
+            className=""
+            isLoading={processingStatus === "loading"}
+          />
+        </div>
       )}
     </div>
   );

@@ -10,8 +10,10 @@ import {
   BookActive,
   RobotActive,
   HummerActive,
+  BurgerMenu,
 } from "@public/icons";
 import { Button } from "../common/Button";
+import { useSidebarStore } from "@/app/store/sidebar";
 
 export default function HeaderNav() {
   const navs: {
@@ -26,34 +28,61 @@ export default function HeaderNav() {
   ];
   const [active, setActive] = useState(navs[0].title);
   const [open, setOpen] = useState(false);
+  const toggleSidebar = useSidebarStore((s: { toggle: () => void }) => s.toggle);
+  const isSidebarOpen = useSidebarStore((s: { isOpen: boolean }) => s.isOpen);
+
   return (
-    <header className="sticky top-0 z-30 bg-(--color-panel) border-b border-(--color-border)">
+    <header
+      className={[
+        "fixed top-0 right-0 z-30 bg-(--color-panel) border-b border-(--color-border)",
+        // Desktop: offset by sidebar width
+        "lg:left-[240px]",
+        // Mobile/Tablet: full width
+        "left-0",
+      ].join(" ")}
+    >
       <div className="h-18 px-6 flex items-center justify-between transition-[padding-right] duration-300 ease-out">
-        <div></div>
         <div className="flex items-center gap-3">
-          {navs.map((nav) => {
-            const Icon: React.ElementType = nav.icon;
-            const ActiveIcon: React.ElementType = nav.activeIcon;
-            const isActive = active === nav.title;
-            return (
-              <Button
-                key={nav.title}
-                onClick={() => setActive(nav.title)}
-                aria-pressed={isActive}
-                className={[
-                  "flex items-center gap-2 p-1 rounded-lg cursor-pointer",
-                  isActive ? "bg-white" : "hover:bg-[#edeceb]",
-                ].join(" ")}
-              >
-                {isActive ? (
-                  <ActiveIcon strokeColor="#0e5f4c" />
-                ) : (
-                  <Icon strokeColor="#495464" />
-                )}{" "}
-                {nav.title}
-              </Button>
-            );
-          })}
+          {/* Burger Menu - visible on mobile/tablet, hidden on desktop */}
+          <button
+            type="button"
+            aria-expanded={isSidebarOpen}
+            aria-label="Toggle sidebar"
+            onClick={toggleSidebar}
+            className="lg:hidden rounded p-1 hover:bg-(--color-button-hover) transition-colors duration-500 cursor-pointer"
+          >
+            <BurgerMenu />
+          </button>
+          {/* Spacer for desktop to maintain layout */}
+          <div className="hidden lg:block"></div>
+        </div>
+        <div className="flex items-center gap-3">
+          {/* Navigation buttons - hide on small screens, show on tablet and up */}
+          <div className="hidden md:flex items-center gap-3">
+            {navs.map((nav) => {
+              const Icon: React.ElementType = nav.icon;
+              const ActiveIcon: React.ElementType = nav.activeIcon;
+              const isActive = active === nav.title;
+              return (
+                <Button
+                  key={nav.title}
+                  onClick={() => setActive(nav.title)}
+                  aria-pressed={isActive}
+                  className={[
+                    "flex items-center gap-2 p-1 rounded-lg cursor-pointer",
+                    isActive ? "bg-white" : "hover:bg-[#edeceb]",
+                  ].join(" ")}
+                >
+                  {isActive ? (
+                    <ActiveIcon strokeColor="#0e5f4c" />
+                  ) : (
+                    <Icon strokeColor="#495464" />
+                  )}{" "}
+                  {nav.title}
+                </Button>
+              );
+            })}
+          </div>
         </div>
         <div className="relative">
           <button

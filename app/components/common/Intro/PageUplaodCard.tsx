@@ -112,8 +112,10 @@ export function PageUplaodCard({
         <Button
           disabled={isSendButtonDisabled}
           onClick={handleSendClick}
-          className={`inline-flex p-3 rounded-xl self-start items-center gap-2 bg-(--color-accent) text-(--color-accent-contrast) hover:bg-(--color-accent-hover) cursor-pointer ${
-            isSendButtonDisabled ? "opacity-50 cursor-not-allowed" : ""
+          className={`inline-flex p-3 rounded-xl self-start items-center gap-2 bg-(--color-accent) text-(--color-accent-contrast) transition-colors ${
+            isSendButtonDisabled
+              ? "opacity-50 cursor-not-allowed"
+              : "hover:bg-(--color-accent-hover) cursor-pointer"
           }`}
         >
           <Send /> Преобразовать

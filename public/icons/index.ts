@@ -46,3 +46,4 @@ export { default as ZoomOut } from "./ZoomOut";
 export { default as ArrowUp } from "./Scrollbar/ArrowUp";
 export { default as ArrowDown } from "./Scrollbar/ArrowDown";
 export { default as Thumb } from "./Scrollbar/Thumb";
+export { default as BurgerMenu } from "./BurgerMenu";

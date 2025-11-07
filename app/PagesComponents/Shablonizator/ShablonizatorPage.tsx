@@ -8,7 +8,7 @@ import {
 } from "@/app/components/common/ProcessingCard";
 import { useState } from "react";
 import ActionIconGroups from "@/app/components/common/ActionIconGroups";
-import { Home, PDF } from "@public/icons";
+import { Download, Home, PDF } from "@public/icons";
 import PdfModal from "@/app/components/common/PdfModal";
 
 export function ShablonizatorPage() {
@@ -68,6 +68,8 @@ export function ShablonizatorPage() {
                 fileType: "PDF",
                 fileSize: "365.78KB",
                 logo: <PDF />,
+                downloadIcon: <Download />,
+                showDownloadOnHover: true,
               },
             ]);
           }, 2000);
@@ -79,7 +81,7 @@ export function ShablonizatorPage() {
         </div>
       </PageUplaodCard>
       {isProcessing && (
-        <>
+        <div className="flex flex-col gap-2">
           <ProcessingCard
             onStop={() => setIsProcessing(false)}
             status={processingStatus}
@@ -88,14 +90,17 @@ export function ShablonizatorPage() {
             documentVariant="simple"
             onDocumentClick={() => setShowPdf(true)}
           />
-          <ActionIconGroups className="mt-2" />
+          <ActionIconGroups
+            className="mt-2"
+            isLoading={processingStatus === "loading"}
+          />
           {showPdf && (
             <PdfModal
               url="/examples/shablonizator.pdf"
               onCancel={() => setShowPdf(false)}
             />
           )}
-        </>
+        </div>
       )}
     </div>
   );

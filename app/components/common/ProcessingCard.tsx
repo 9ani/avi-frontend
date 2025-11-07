@@ -15,6 +15,7 @@ export interface DocumentData {
   fileSize: string;
   downloadIcon?: React.ReactNode;
   logo?: React.ReactNode;
+  showDownloadOnHover?: boolean;
 }
 
 interface ProcessingCardProps {

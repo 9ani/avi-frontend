@@ -68,7 +68,7 @@ export function ObzorPoEmittentamPage() {
         center={!isProcessing}
       />
       {isProcessing && (
-        <>
+        <div className="flex flex-col gap-2">
           <ProcessingCard
             onStop={() => setIsProcessing(false)}
             status={processingStatus}
@@ -77,14 +77,17 @@ export function ObzorPoEmittentamPage() {
             documentVariant="simple"
             onDocumentClick={() => setShowPdf(true)}
           />
-          <ActionIconGroups className="mt-2" />
+          <ActionIconGroups
+            className=""
+            isLoading={processingStatus === "loading"}
+          />
           {showPdf && (
             <PdfModal
               url="/examples/emitant.pdf"
               onCancel={() => setShowPdf(false)}
             />
           )}
-        </>
+        </div>
       )}
     </div>
   );

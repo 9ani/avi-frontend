@@ -34,10 +34,10 @@ export function RightPanel() {
     <>
       {/* Hidden panel */}
       {!isOpen && (
-        <div className=" fixed right-0 top-18 h-18 w-[360px] flex items-center justify-around gap-3 rounded-md ">
+        <div className="z-10 fixed right-0 top-18 h-18 w-[360px] flex items-center justify-around gap-3 rounded-md ">
           <Edit />
           <div className="w-0.5 h-6 bg-[#bcbab2]" />
-          <div className="text-xl font-semibold">{pageTitle}</div>
+          <div className="text-xl font-medium">{pageTitle}</div>
           <button
             type="button"
             aria-expanded={isOpen}
@@ -49,12 +49,11 @@ export function RightPanel() {
           </button>
         </div>
       )}
-
       {/* Sliding Right Panel */}
       <aside
         aria-hidden={!isOpen}
         className={[
-          "fixed right-0 top-18 z-40 h-[calc(100vh-72px)]  w-[360px] max-w-[80vw] border-l border-neutral-200 bg-white",
+          "fixed right-0 top-18 z-10 h-[calc(100vh-72px)] w-[360px] max-w-[80vw] border-l border-neutral-200 bg-white",
           "shadow-[inset_1px_0_0_rgba(0,0,0,0.04)]",
           "transform transition-transform duration-300 ease-out",
           isOpen ? "translate-x-0" : "translate-x-full",

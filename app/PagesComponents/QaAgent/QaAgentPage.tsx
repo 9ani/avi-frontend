@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePageLogo } from "@/app/hooks/usePageLogo";
 import { PageIntroCard } from "@/app/components/common/Intro/PageIntroCard";
 import { ChatInput } from "@/app/components/common/ChatInput";
@@ -27,10 +27,18 @@ export function QaAgentPage() {
   ];
   const PageLogo = usePageLogo();
   const [messages, setMessages] = useState<MessageData[]>([]);
+  const messagesContainerRef = useRef<HTMLDivElement | null>(null);
 
   const isProcessing = messages.some(
     (msg) => msg.processingStatus === "loading"
   );
+
+  useEffect(() => {
+    const el = messagesContainerRef.current;
+    if (el) {
+      el.scrollTop = el.scrollHeight;
+    }
+  }, [messages]);
 
   const handleChatSubmit = (message: string) => {
     const newMessage: MessageData = {
@@ -131,7 +139,7 @@ export function QaAgentPage() {
   };
 
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className="flex flex-col h-full w-full pt-4">
       {messages.length === 0 ? (
         <PageIntroCard logo={PageLogo}>
           <div className="flex flex-col gap-2">
@@ -143,7 +151,7 @@ export function QaAgentPage() {
                   key={label}
                   type="button"
                   onClick={() => handleCategoryClick(label)}
-                  className="rounded-lg border border-(--color-border-muted) text-(--color-accent) font-medium px-4 py-2 text-sm transition-colors hover:bg-amber-50 cursor-pointer"
+                  className="rounded-lg border border-[#f4ece5] text-(--color-accent) font-medium px-4 py-2 text-sm transition-colors hover:bg-amber-50 hover:bprder-[#e9d9cb] cursor-pointer"
                 >
                   {label}
                 </button>
@@ -152,8 +160,11 @@ export function QaAgentPage() {
           </div>
         </PageIntroCard>
       ) : (
-        <div className="flex-1 overflow-y-auto pt-6 pb-4">
-          <div className="flex flex-col gap-4">
+        <div
+          ref={messagesContainerRef}
+          className="flex-1 overflow-y-auto pt-6 pb-4"
+        >
+          <div className="flex flex-col gap-4 mb-26">
             {messages.map((message, index) => (
               <div key={index} className="flex flex-col gap-4">
                 <UserRequest text={message.text} />
