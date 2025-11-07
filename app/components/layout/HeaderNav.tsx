@@ -14,8 +14,10 @@ import {
 } from "@public/icons";
 import { Button } from "../common/Button";
 import { useSidebarStore } from "@/app/store/sidebar";
+import { useRouter } from "next/navigation";
 
 export default function HeaderNav() {
+  const router = useRouter();
   const navs: {
     title: string;
     icon: React.ElementType;
@@ -28,7 +30,9 @@ export default function HeaderNav() {
   ];
   const [active, setActive] = useState(navs[0].title);
   const [open, setOpen] = useState(false);
-  const toggleSidebar = useSidebarStore((s: { toggle: () => void }) => s.toggle);
+  const toggleSidebar = useSidebarStore(
+    (s: { toggle: () => void }) => s.toggle
+  );
   const isSidebarOpen = useSidebarStore((s: { isOpen: boolean }) => s.isOpen);
 
   return (
@@ -119,6 +123,7 @@ export default function HeaderNav() {
               <button
                 className="w-full text-left px-4 py-2 hover:bg-(--color-panel) text-red-600"
                 role="menuitem"
+                onClick={() => router.push("/login")}
               >
                 Logout
               </button>

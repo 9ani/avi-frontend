@@ -5,7 +5,7 @@ import { Profile } from "@public/icons";
 export default function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-[200] bg-(--color-panel) border-b border-(--color-border)">
+    <header className="sticky top-0 z-50 bg-(--color-panel) border-b border-(--color-border)">
       <div
         className={[
           "h-18 px-6 flex items-center justify-end transition-[padding-right] duration-300 ease-out",
@@ -14,7 +14,7 @@ export default function Header() {
         {/* <div className="flex items-center gap-3">
           <Logo strokeColor="#B58150" />
         </div> */}
-        <div className="relative z-[210]">
+        <div className="relative">
           <button
             className="flex items-center gap-3 rounded-md px-3 py-1 hover:bg-(--color-bg) transition-colors"
             onClick={() => setOpen((v) => !v)}
@@ -28,7 +28,7 @@ export default function Header() {
           </button>
           {open && (
             <div
-              className="z-[220] absolute right-0 mt-2 w-48 rounded-md bg-white shadow ring-1 ring-black/5 text-sm overflow-hidden"
+              className="z-50 absolute right-0 mt-2 w-48 rounded-md bg-white shadow ring-1 ring-black/5 text-sm overflow-hidden"
               role="menu"
             >
               <div className="px-4 py-2 text-(--color-text-gray)">
