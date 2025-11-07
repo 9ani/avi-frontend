@@ -20,7 +20,7 @@ export function ActionIconGroups({
 
   return (
     <div
-      className={["flex w-full px-24 justify-end gap-3", className].join(" ")}
+      className={["flex w-full lg:px-24 sm:px-8 px-4 justify-end gap-3", className].join(" ")}
     >
       <div className={groupClass}>
         <button type="button" className={itemClass} aria-label="Refresh">

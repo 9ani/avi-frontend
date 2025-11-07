@@ -15,12 +15,12 @@ export function PageIntroCard({
   return (
     <div
       className={[
-        "flex w-full px-24",
+        "flex w-full lg:px-24 sm:px-8 px-4",
         center ? "items-center h-full" : "items-start mt-10",
         className || "",
       ].join(" ")}
     >
-      <div className="flex items-start justify-center gap-4">
+      <div className="flex lg:flex-row flex-col items-start justify-center gap-4">
         {Logo && <Logo w={40} h={40} />}
         <div className="flex-1 rounded-md bg-white p-4 shadow-sm">
           {children}

@@ -12,7 +12,7 @@ export function PageContentCard({
   className,
 }: PageContentCardProps) {
   return (
-    <div className={["flex w-full px-24", className || ""].join(" ")}>
+    <div className={["flex w-full lg:px-24 sm:px-8 px-4", className || ""].join(" ")}>
       <div className="flex items-start justify-center gap-4 w-full">
         {Logo && <Logo w={40} h={40} />}
         <div className="flex-1 rounded-md bg-white p-4 shadow-sm">

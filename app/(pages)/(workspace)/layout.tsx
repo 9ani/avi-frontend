@@ -11,11 +11,15 @@ export default function WorkspaceLayout({
   return (
     <div
       className={[
-        "h-[calc(100vh-80px)] p-8 transition-[padding-right] duration-300 ease-out",
+        "h-[calc(100vh-110px)] transition-[padding-right] duration-300 ease-out pt-14",
         isOpen ? "pr-[360px]" : "pr-0",
       ].join(" ")}
     >
-      <Refresh />
+      {/* refhesh move to right panel line with div */}
+      <div className="lg:absolute sm:relative lg:left-4 lg:top-22 left-4 top-0">
+        <Refresh />
+      </div>
+
       {children}
     </div>
   );
